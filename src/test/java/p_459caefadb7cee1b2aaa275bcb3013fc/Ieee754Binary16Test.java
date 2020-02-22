@@ -7,10 +7,10 @@ import static java.lang.Math.pow;
 import static java.lang.String.format;
 import static java.util.concurrent.ThreadLocalRandom.current;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static p_459caefadb7cee1b2aaa275bcb3013fc.Half.intBitsToHalf;
+import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.binary16IntToFloat;
 
 @Slf4j
-class HalfTest {
+class Ieee754Binary16Test {
 
     // -----------------------------------------------------------------------------------------------------------------
     private static void printBinary32(final int value) {
@@ -41,7 +41,7 @@ class HalfTest {
         }
         {
             final int intBits = 0b0_00000_0000000000;
-            final float actual = intBitsToHalf(intBits);
+            final float actual = binary16IntToFloat(intBits);
             log.debug("positive zero bits to half: {}", actual);
             assertEquals(+0.0f, actual);
         }
@@ -56,7 +56,7 @@ class HalfTest {
         }
         {
             final int intBits = 0b1_00000_0000000000;
-            final float actual = intBitsToHalf(intBits);
+            final float actual = binary16IntToFloat(intBits);
             log.debug("negative zero bits to half: {}", actual);
             assertEquals(-0.0f, actual);
         }
@@ -71,7 +71,7 @@ class HalfTest {
         }
         {
             final int intBits = 0b0_11111_0000000000;
-            final float actual = intBitsToHalf(intBits);
+            final float actual = binary16IntToFloat(intBits);
             log.debug("positive infinity bits to half: {}", actual);
             assertEquals(Float.POSITIVE_INFINITY, actual);
         }
@@ -86,7 +86,7 @@ class HalfTest {
         }
         {
             final int intBits = 0b1_11111_0000000000;
-            final float actual = intBitsToHalf(intBits);
+            final float actual = binary16IntToFloat(intBits);
             log.debug("negative infinity bits to half: {}", actual);
             assertEquals(Float.NEGATIVE_INFINITY, actual);
         }
@@ -126,15 +126,16 @@ class HalfTest {
         {
             final int intBits = (sign << 15) | (significand >> 13);
             printBinary16(intBits);
-            final float actual = intBitsToHalf(intBits);
+            final float actual = binary16IntToFloat(intBits);
             log.debug("subnormal bits to half:   {}", format("%10.100f", actual));
         }
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
     @Test
     void smallest_positive_subnormal_number() {
         final int binary16 = 0b0_00000_0000000001;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%1.20f", half));
         log.debug("expected: {}", "0.000000059605");
     }
@@ -142,7 +143,7 @@ class HalfTest {
     @Test
     void largest_subnormal_number() {
         final int binary16 = 0b0_00000_1111111111;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%1.20f", half));
         log.debug("expected: {}", "0.000060976");
     }
@@ -150,7 +151,7 @@ class HalfTest {
     @Test
     void smallest_positive_normalNumber() {
         final int binary16 = 0b0_00001_0000000000;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%1.10f", half));
         log.debug("expected: {}", "0.000061035");
     }
@@ -158,7 +159,7 @@ class HalfTest {
     @Test
     void largest_normal_number() {
         final int binary16 = 0b0_11110_1111111111;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%5.10f", half));
         log.debug("expected: {}", "65504");
     }
@@ -166,7 +167,7 @@ class HalfTest {
     @Test
     void largest_number_less_than_one() {
         final int binary16 = 0b0_01110_1111111111;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%1.20f", half));
         log.debug("expected: {}", "0.99951");
     }
@@ -174,7 +175,7 @@ class HalfTest {
     @Test
     void one() {
         final int binary16 = 0b0_01111_0000000000;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%1.20f", half));
         log.debug("expected: {}", "1");
     }
@@ -182,7 +183,7 @@ class HalfTest {
     @Test
     void smallest_number_larger_than_one() {
         final int binary16 = 0b0_01111_0000000001;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%1.20f", half));
         log.debug("expected: {}", "1.001");
     }
@@ -190,7 +191,7 @@ class HalfTest {
     @Test
     void equal_to_one_third() {
         final int binary16 = 0b0_01101_0101010101;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%1.20f", half));
         log.debug("expected: {}", "0.333251953125");
     }
@@ -198,7 +199,7 @@ class HalfTest {
     @Test
     void minus_two() {
         final int binary16 = 0b1_10000_0000000000;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%2.20f", half));
         log.debug("expected: {}", "-2");
     }
@@ -206,7 +207,7 @@ class HalfTest {
     @Test
     void positive_zero() {
         final int binary16 = 0b0_00000_0000000000;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%+2.20f", half));
         log.debug("expected: {}", "+0");
     }
@@ -214,7 +215,7 @@ class HalfTest {
     @Test
     void negative_zero() {
         final int binary16 = 0b1_00000_0000000000;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%+2.20f", half));
         log.debug("expected: {}", "-0");
     }
@@ -222,7 +223,7 @@ class HalfTest {
     @Test
     void positive_infinity() {
         final int binary16 = 0b0_11111_0000000000;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%f", half));
         log.debug("expected: {}", "Infinity");
     }
@@ -230,7 +231,7 @@ class HalfTest {
     @Test
     void negative_infinity() {
         final int binary16 = 0b1_11111_0000000000;
-        final float half = intBitsToHalf(binary16);
+        final float half = binary16IntToFloat(binary16);
         log.debug("actual:   {}", format("%f", half));
         log.debug("expected: {}", "-Infinity");
     }
