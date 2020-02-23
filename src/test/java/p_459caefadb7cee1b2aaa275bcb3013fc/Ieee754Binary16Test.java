@@ -23,7 +23,7 @@ import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.binary16ShortBi
 import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.floatToBinary16ShortBits;
 
 @Slf4j
-class Ieee754Binary16Test {
+public class Ieee754Binary16Test {
 
     // -----------------------------------------------------------------------------------------------------------------
     private static String formatBinary32(final int value) {
