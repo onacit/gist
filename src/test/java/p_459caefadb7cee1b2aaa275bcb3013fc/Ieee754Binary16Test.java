@@ -3,10 +3,7 @@ package p_459caefadb7cee1b2aaa275bcb3013fc;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static java.lang.Math.pow;
 import static java.lang.String.format;
-import static java.util.concurrent.ThreadLocalRandom.current;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.binary16IntToFloat;
 
 @Slf4j
@@ -32,104 +29,6 @@ class Ieee754Binary16Test {
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    @Test
-    void testPositiveZero() {
-        {
-            final int intBits = 0b0_0000000_0000000000_0000000000_000;
-            final float actual = Float.intBitsToFloat(intBits);
-            log.debug("positive zero bits to float: {}", actual);
-        }
-        {
-            final int intBits = 0b0_00000_0000000000;
-            final float actual = binary16IntToFloat(intBits);
-            log.debug("positive zero bits to half: {}", actual);
-            assertEquals(+0.0f, actual);
-        }
-    }
-
-    @Test
-    void testNegativeZero() {
-        {
-            final int intBits = 0b1_00000000_0000000000_0000000000_000;
-            final float actual = Float.intBitsToFloat(intBits);
-            log.debug("negative zero bits to float: {}", actual);
-        }
-        {
-            final int intBits = 0b1_00000_0000000000;
-            final float actual = binary16IntToFloat(intBits);
-            log.debug("negative zero bits to half: {}", actual);
-            assertEquals(-0.0f, actual);
-        }
-    }
-
-    @Test
-    void testPositiveInfinity() {
-        {
-            final int intBits = 0b0_11111111_0000000000_0000000000_000;
-            final float actual = Float.intBitsToFloat(intBits);
-            log.debug("positive infinity bits to float: {}", actual);
-        }
-        {
-            final int intBits = 0b0_11111_0000000000;
-            final float actual = binary16IntToFloat(intBits);
-            log.debug("positive infinity bits to half: {}", actual);
-            assertEquals(Float.POSITIVE_INFINITY, actual);
-        }
-    }
-
-    @Test
-    void testNegativeInfinity() {
-        {
-            final int intBits = 0b1_11111111_0000000000_0000000000_000;
-            final float actual = Float.intBitsToFloat(intBits);
-            log.debug("negative infinity bits to float: {}", actual);
-        }
-        {
-            final int intBits = 0b1_11111_0000000000;
-            final float actual = binary16IntToFloat(intBits);
-            log.debug("negative infinity bits to half: {}", actual);
-            assertEquals(Float.NEGATIVE_INFINITY, actual);
-        }
-    }
-
-    private static int randomSignificantOtherThanZero(final int size) {
-        while (true) {
-            int value = current().nextInt();
-            value >>>= (Integer.SIZE - size);
-            if (value != 0) {
-                return value;
-            }
-        }
-    }
-
-    @Test
-    void testSubnormal() {
-        //final int sign = current().nextBoolean() ? 0 : 1;
-        //final int significand = randomSignificantOtherThanZero(10) << 13;
-        final int sign = 0;
-        final int significand = 0b100000000_0000000000_0;
-//        {
-        log.debug("x: {}", pow(2, -126) / pow(2, -14));
-        log.debug("x: {}", pow(2, 14) / pow(2, 126));
-        final double binary32 = pow(2, -126) * .5;
-        final double binary16 = pow(2, -14) * .5;
-        log.debug("binary32: {}", format("%10.100f", binary32));
-        log.debug("binary16: {}", format("%10.100f", binary16));
-        log.debug("a:        {}", format("%10.100f", binary16 * (pow(2, 14) / pow(2, 126))));
-//        }
-        {
-            final int intBits = (sign << 31) | significand;
-            printBinary32(intBits);
-            final float actual = Float.intBitsToFloat(intBits);
-            log.debug("subnormal bits to single: {}", format("%10.100f", actual));
-        }
-        {
-            final int intBits = (sign << 15) | (significand >> 13);
-            printBinary16(intBits);
-            final float actual = binary16IntToFloat(intBits);
-            log.debug("subnormal bits to half:   {}", format("%10.100f", actual));
-        }
-    }
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test

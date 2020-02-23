@@ -40,14 +40,28 @@
     <version.maven-javadoc-plugin>3.1.0</version.maven-javadoc-plugin>
     <version.maven-surefire>2.22.2</version.maven-surefire>
     <version.org.junit.jupiter>5.6.0</version.org.junit.jupiter>
+    <version.org.junit.platform>1.6.0</version.org.junit.platform>
     <version.org.mockito>3.2.4</version.org.mockito>
   </properties>
+
+  <repositories>
+    <repository>
+      <id>google</id>
+      <url>https://maven.google.com</url>
+    </repository>
+  </repositories>
 
   <dependencies>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.2.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.android.support</groupId>
+      <artifactId>support-core-utils</artifactId>
+      <version>28.0.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -62,11 +76,11 @@
       <version>2.0.1.Final</version>
       <scope>test</scope>
       <exclusions>
-        <exclusion> <!-- dependencyConvergence -->
+        <exclusion>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-api</artifactId>
         </exclusion>
-        <exclusion> <!-- dependencyConvergence -->
+        <exclusion>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-engine</artifactId>
         </exclusion>
@@ -90,19 +104,19 @@
       <version>${version.org.junit.jupiter}</version>
       <scope>test</scope>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>org.mockito</groupId>-->
-    <!--      <artifactId>mockito-core</artifactId>-->
-    <!--      <version>${version.org.mockito}</version>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-launcher</artifactId>
+      <version>${version.org.junit.platform}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-junit-jupiter</artifactId>
       <version>${version.org.mockito}</version>
       <scope>test</scope>
       <exclusions>
-        <exclusion> <!-- dependencyConvergence -->
+        <exclusion>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-api</artifactId>
         </exclusion>
@@ -123,9 +137,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>${version.maven-javadoc-plugin}</version>
-          <configuration>
-            <!--            <doclint>all</doclint>-->
-          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -203,19 +214,6 @@
             <arg>-Xlint</arg>
           </compilerArgs>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <version>${version.maven-failsafe}</version>
-        <executions>
-          <execution>
-            <goals>
-              <!--              <goal>integration-test</goal>-->
-              <!--              <goal>verify</goal>-->
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -325,7 +323,7 @@
         <version>3.12.0</version>
         <configuration>
           <targetJdk>1.6</targetJdk>
-          <skipEmptyReport>false</skipEmptyReport> <!-- https://issues.apache.org/jira/browse/MPMD-225 -->
+          <skipEmptyReport>false</skipEmptyReport>
         </configuration>
       </plugin>
       <plugin>
@@ -357,38 +355,30 @@
 
   <profiles>
     <profile>
-      <id>umlgraph</id>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-javadoc-plugin</artifactId>
-              <version>${version.maven-javadoc-plugin}</version>
-              <configuration>
-                <doclint>all</doclint>
-                <additionalOptions>
-                  <additionalOption>-all</additionalOption>
-                  <additionalOption>-collapsible</additionalOption>
-                  <additionalOption>-hide java.*</additionalOption>
-                  <additionalOption>-hide javax.*</additionalOption>
-                  <additionalOption>-horizontal</additionalOption>
-                  <additionalOption>-inferdep</additionalOption>
-                  <additionalOption>-inferdepinpackage</additionalOption>
-                  <additionalOption>-inferrel</additionalOption>
-                  <additionalOption>-outputencoding ${project.reporting.outputEncoding}</additionalOption>
-                </additionalOptions>
-              </configuration>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-      </build>
-    </profile>
-    <profile> <!-- just for IntelliJ IDEA -->
       <id>1.8</id>
       <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
       </properties>
+    </profile>
+    <profile>
+      <id>failsafe</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>${version.maven-failsafe}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
   </profiles>
 </project>
