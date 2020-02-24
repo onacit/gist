@@ -226,6 +226,7 @@
               <goal>check</goal>
             </goals>
             <configuration>
+              <skip>true</skip>
               <signature>
                 <groupId>org.codehaus.mojo.signature</groupId>
                 <artifactId>java15</artifactId>
