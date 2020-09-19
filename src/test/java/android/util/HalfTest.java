@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static java.lang.Float.floatToIntBits;
 import static java.lang.String.format;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16Test.formatBinary16;
 import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16Test.formatBinary32;
 
@@ -21,7 +22,7 @@ public class HalfTest {
         log.debug("float:    {} {}", formatBinary32(floatToIntBits(f)), format("%10.20f", f));
         final short actual = Half.toHalf(f);
         log.debug("actual:   {} {}", formatBinary16(actual), actual);
-//        assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -33,6 +34,6 @@ public class HalfTest {
         log.debug("float:    {} {}", formatBinary32(floatToIntBits(f)), format("%10.20f", f));
         final short actual = Half.toHalf(f);
         log.debug("actual:   {} {}", formatBinary16(actual), actual);
-//        assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 }

@@ -13,9 +13,9 @@ import static java.lang.String.format;
 import static java.util.concurrent.ThreadLocalRandom.current;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.MASK_EXPONENT;
+import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.MASK_EXPONENT16;
 import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.MASK_EXPONENT_32;
-import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.MASK_SIGNIFICAND;
+import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.MASK_SIGNIFICAND16;
 import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.MASK_SIGNIFICAND_32;
 import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.SIZE_SIGNIFICAND;
 import static p_459caefadb7cee1b2aaa275bcb3013fc.Ieee754Binary16.SIZE_SIGNIFICAND_BINARY32;
@@ -37,8 +37,8 @@ public class Ieee754Binary16Test {
     public static String formatBinary16(final int value) {
         return format("%1$1s %2$8s %3$23s",
                       toBinaryString(value >>> (Integer.SIZE - 1)),
-                      toBinaryString((value & MASK_EXPONENT) >> SIZE_SIGNIFICAND),
-                      toBinaryString(value & MASK_SIGNIFICAND)
+                      toBinaryString((value & MASK_EXPONENT16) >> SIZE_SIGNIFICAND),
+                      toBinaryString(value & MASK_SIGNIFICAND16)
         );
     }
 
@@ -67,6 +67,7 @@ public class Ieee754Binary16Test {
 //        assertEquals(expected, actual);
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
     @Test
     void smallest_positive_normal_number() {
         log.debug("documented: {}", "0.000061035");
