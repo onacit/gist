@@ -1,11 +1,12 @@
 [submodule ".idea/codeStyles"]
 	path = .idea/codeStyles
 	url = https://github.com/onacit/dot-idea-codestyles.git
-	branch = master
+	ignore = dirty
 [submodule "src/main/java/p_459caefadb7cee1b2aaa275bcb3013fc"]
 	path = src/main/java/p_459caefadb7cee1b2aaa275bcb3013fc
 	url = https://gist.github.com/459caefadb7cee1b2aaa275bcb3013fc.git
-	branch = master
+	ignore = dirty
 [submodule "src/main/java/p_fd0b04b007e395a7fcfc5066898d422d"]
 	path = src/main/java/p_fd0b04b007e395a7fcfc5066898d422d
 	url = https://gist.github.com/fd0b04b007e395a7fcfc5066898d422d.git
+	ignore = dirty
