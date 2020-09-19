@@ -10,3 +10,6 @@
 	path = src/main/java/p_fd0b04b007e395a7fcfc5066898d422d
 	url = https://gist.github.com/fd0b04b007e395a7fcfc5066898d422d.git
 	ignore = dirty
+[submodule "src/main/java/p_aea6ebe8f23c7ea8b3bdc99a62169b07"]
+	path = src/main/java/p_aea6ebe8f23c7ea8b3bdc99a62169b07
+	url = https://gist.github.com/aea6ebe8f23c7ea8b3bdc99a62169b07.git
