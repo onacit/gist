@@ -2,10 +2,6 @@
 	path = .idea/codeStyles
 	url = https://github.com/onacit/dot-idea-codestyles.git
 	ignore = dirty
-[submodule "src/main/java/p_459caefadb7cee1b2aaa275bcb3013fc"]
-	path = src/main/java/p_459caefadb7cee1b2aaa275bcb3013fc
-	url = https://gist.github.com/459caefadb7cee1b2aaa275bcb3013fc.git
-	ignore = dirty
 [submodule "src/main/java/p_fd0b04b007e395a7fcfc5066898d422d"]
 	path = src/main/java/p_fd0b04b007e395a7fcfc5066898d422d
 	url = https://gist.github.com/fd0b04b007e395a7fcfc5066898d422d.git
@@ -16,3 +12,5 @@
 [submodule "src/main/java/p_4cb92ba58cd8e8ab40d7e734e1f86ce1"]
 	path = src/main/java/p_4cb92ba58cd8e8ab40d7e734e1f86ce1
 	url = https://gist.github.com/4cb92ba58cd8e8ab40d7e734e1f86ce1.git
+	branch = master
+	ignore = dirty
