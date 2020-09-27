@@ -7,18 +7,28 @@ import p_4cb92ba58cd8e8ab40d7e734e1f86ce1.MyersBriggsTypeIndicator.JudgingFuncti
 import p_4cb92ba58cd8e8ab40d7e734e1f86ce1.MyersBriggsTypeIndicator.LifestylePreference;
 import p_4cb92ba58cd8e8ab40d7e734e1f86ce1.MyersBriggsTypeIndicator.PerceivingFunction;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Slf4j
 class MyersBriggsTypeIndicatorTest {
 
     @Test
-    void a() {
+    void testOf() {
         for (final Attitude a : Attitude.values()) {
             for (final PerceivingFunction p : PerceivingFunction.values()) {
                 for (final JudgingFunction j : JudgingFunction.values()) {
                     for (final LifestylePreference l : LifestylePreference.values()) {
-                        final MyersBriggsTypeIndicator v = new MyersBriggsTypeIndicator(a, p, j, l);
-                        final String word = v.toFourLetterTestResult();
-                        log.debug("word: {}", word);
+                        assertThat(MyersBriggsTypeIndicator.of(a, p, j, l))
+                                .isNotNull()
+                                .satisfies(v -> {
+                                    log.debug("result: {}", v.result);
+                                    assertThat(v.attitude).isSameAs(a);
+                                    assertThat(v.perceivingFunction).isSameAs(p);
+                                    assertThat(v.judgingFunction).isSameAs(j);
+                                    assertThat(v.lifestylePreference).isSameAs(l);
+                                    assertThat(v)
+                                            .isSameAs(MyersBriggsTypeIndicator.fromResult(v.result));
+                                });
                     }
                 }
             }
