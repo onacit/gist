@@ -21,3 +21,8 @@ buildNumber.properties
 
 .idea/
 !.idea/codeStyles
+*.iml
+
+
+*.log
+*.bak

@@ -26,8 +26,7 @@ class MyersBriggsTypeIndicatorTest {
                                     assertThat(v.perceivingFunction).isSameAs(p);
                                     assertThat(v.judgingFunction).isSameAs(j);
                                     assertThat(v.lifestylePreference).isSameAs(l);
-                                    assertThat(v)
-                                            .isSameAs(MyersBriggsTypeIndicator.fromResult(v.result));
+                                    assertThat(v).isSameAs(MyersBriggsTypeIndicator.ofResult(v.result));
                                 });
                     }
                 }
