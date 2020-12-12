@@ -11,22 +11,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 class 干支Test {
 
     @Test
-    void test_ALL_COMBINATIONS() {
-        for (int i = 0; i < 干支.ALL_INSTANCES.size(); i++) {
-            log.debug("[{}]: {}", i, 干支.ALL_INSTANCES.get(i));
+    void test_VALUES() {
+        for (int i = 0; i < 干支.VALUES.size(); i++) {
+            log.debug("[{}]: {}", i, 干支.VALUES.get(i));
         }
-        assertThat(new HashSet<>(干支.ALL_INSTANCES).size()).isEqualTo(干支.ALL_INSTANCES.size());
+        assertThat(new HashSet<>(干支.VALUES).size()).isEqualTo(干支.VALUES.size());
     }
 
     @Test
-    void testValueOf() {
+    void testOf() {
         final 干支.天干[] 干们 = 干支.天干.values();
         final 干支.地支[] 支们 = 干支.地支.values();
         for (干支.天干 干 : 干们) {
             for (干支.地支 支 : 支们) {
-                final 干支 value = 干支.valueOf(干, 支);
+                final 干支 value = 干支.of(干, 支);
                 assertThat(value).isNotNull().satisfies(v -> {
-                    assertThat(干支.ALL_INSTANCES.indexOf(v)).isEqualTo(干支.indexOf(干, 支));
+                    assertThat(干支.VALUES.indexOf(v)).isEqualTo(干支.index(干, 支));
                 });
             }
         }
