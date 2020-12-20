@@ -44,7 +44,7 @@ class StemsAndBranchesTest { // 干支Test
     @Test
     void testGetNext() {
         for (final 干支 干支 : 干支.VALUES) {
-            assertThat(干支.getNex()).isNotNull();
+            assertThat(干支.getNext()).isNotNull();
         }
     }
 }
