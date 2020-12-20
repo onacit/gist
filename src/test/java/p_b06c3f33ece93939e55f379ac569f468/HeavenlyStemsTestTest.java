@@ -11,10 +11,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 class HeavenlyStemsTestTest { // 天干Test
 
     @Test
-    void test_REGEXP() {
-        final Pattern pattern = Pattern.compile(天干.REGEXP);
+    void test_NAME_REGEXP() {
+        final Pattern pattern = Pattern.compile(天干.NAME_REGEXP);
         for (final 天干 value : 天干.values()) {
             assertThat(pattern.matcher(value.name()).matches()).isTrue();
         }
     }
+
+    @Test
+    void test_KOREAN_NAME_REGEXP() {
+        final Pattern pattern = Pattern.compile(天干.NAME_REGEXP_KOREAN);
+        for (final 天干 value : 天干.values()) {
+            assertThat(pattern.matcher(value.koreanName()).matches()).isTrue();
+        }
+    }
+
 }

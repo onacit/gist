@@ -4,17 +4,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
-import java.util.regex.Pattern;
 
+import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
-class StemAndBranchTest { // 干支Test
+class StemsAndBranchesTest { // 干支Test
 
     @Test
     void test_VALUES() {
         for (int i = 0; i < 干支.VALUES.size(); i++) {
-            log.debug("[{}]: {}", i, 干支.VALUES.get(i));
+            log.debug("[{}]: {}", format("%1$2d", i), 干支.VALUES.get(i));
         }
         assertThat(new HashSet<>(干支.VALUES).size()).isEqualTo(干支.VALUES.size());
     }
@@ -30,6 +30,21 @@ class StemAndBranchTest { // 干支Test
                     assertThat(干支.VALUES.indexOf(v)).isEqualTo(干支.index(干, 支));
                 });
             }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @Test
+    void testGetPrevious() {
+        for (final 干支 干支 : 干支.VALUES) {
+            assertThat(干支.getPrevious()).isNotNull();
+        }
+    }
+
+    @Test
+    void testGetNext() {
+        for (final 干支 干支 : 干支.VALUES) {
+            assertThat(干支.getNex()).isNotNull();
         }
     }
 }
