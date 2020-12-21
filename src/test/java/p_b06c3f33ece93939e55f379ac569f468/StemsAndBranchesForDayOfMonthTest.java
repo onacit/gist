@@ -36,4 +36,10 @@ class StemsAndBranchesForDayOfMonthTest { // 月建Test
         assertThat(日辰.getMonth()).isNotNull().isEqualTo(Month.APRIL);
         assertThat(日辰.getDayOfMonth()).isEqualTo(23);
     }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @Test
+    void testEquals() {
+        assertThat(of2020庚子04辛巳23丙申()).isEqualTo(of2020庚子04辛巳23丙申());
+    }
 }

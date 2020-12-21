@@ -36,4 +36,33 @@ class StemsAndBranchesForMonthTest { // 月建Test
         assertThat(月建.getMonth()).isNotNull().isEqualTo(Month.APRIL);
         assertThat(月建.isLeapMonth()).isFalse();
     }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @Test
+    void testEquals() {
+        assertThat(of2020庚子04辛巳()).isEqualTo(of2020庚子04辛巳());
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @Test
+    void testGetPrevious() {
+        {
+            final 干支.月建 current = of2020庚子04辛巳();
+            assertThat(current.getPrevious()).isNotNull().satisfies(p -> {
+                assertThat(p.getYear()).isNotNull().isEqualTo(current.getYear());
+                assertThat(p.getMonth()).isNotNull().isEqualTo(current.getMonth().minus(1L));
+            });
+        }
+    }
+
+    @Test
+    void testGetNext() {
+        {
+            final 干支.月建 current = of2020庚子04辛巳();
+            assertThat(current.getNext()).isNotNull().satisfies(p -> {
+                assertThat(p.getYear()).isNotNull().isEqualTo(current.getYear());
+                assertThat(p.getMonth()).isNotNull().isEqualTo(current.getMonth().plus(1L));
+            });
+        }
+    }
 }

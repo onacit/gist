@@ -38,8 +38,8 @@ class StemsAndBranchesTest { // 干支Test
         assertThat(new HashSet<>(干支.VALUES).size()).isEqualTo(干支.VALUES.size());
         for (int i = 0; i < 干支.VALUES.size(); i++) {
             final 干支 value = 干支.VALUES.get(i);
-            assertThat(ALL_NAMES.indexOf(value.toName())).isEqualTo(i);
-            assertThat(ALL_KOREAN_NAMES.indexOf(value.toKoreanName())).isEqualTo(i);
+            assertThat(ALL_NAMES.indexOf(value.getName())).isEqualTo(i);
+            assertThat(ALL_KOREAN_NAMES.indexOf(value.getKoreanName())).isEqualTo(i);
         }
     }
 
@@ -48,7 +48,7 @@ class StemsAndBranchesTest { // 干支Test
     void test_REGEXP_NAME() {
         final Pattern pattern = Pattern.compile(干支.REGEXP_NAME);
         for (final 干支 value : 干支.VALUES) {
-            final String name = value.toName();
+            final String name = value.getName();
             assertThat(pattern.matcher(name)).satisfies(m -> {
                 assertThat(m.matches()).isTrue();
                 assertThat(m.group("stem")).isNotNull().isEqualTo(value.getStem().name());
@@ -61,7 +61,7 @@ class StemsAndBranchesTest { // 干支Test
     void test_REGEXP_KOREAN_NAME() {
         final Pattern pattern = Pattern.compile(干支.REGEXP_KOREAN_NAME);
         for (final 干支 value : 干支.VALUES) {
-            final String koreanName = value.toKoreanName();
+            final String koreanName = value.getKoreanName();
             assertThat(pattern.matcher(koreanName)).satisfies(m -> {
                 assertThat(m.matches()).isTrue();
                 assertThat(m.group("stem")).isNotNull().isEqualTo(value.getStem().koreanName());
@@ -96,7 +96,7 @@ class StemsAndBranchesTest { // 干支Test
     @Test
     void testToName() {
         for (final 干支 value : 干支.VALUES) {
-            final String name = value.toName();
+            final String name = value.getName();
             assertThat(name).isNotNull().hasSize(2);
         }
     }
@@ -104,7 +104,7 @@ class StemsAndBranchesTest { // 干支Test
     @Test
     void testToKoreanName() {
         for (final 干支 value : 干支.VALUES) {
-            final String koreanName = value.toKoreanName();
+            final String koreanName = value.getKoreanName();
             assertThat(koreanName).isNotNull().hasSize(2);
         }
     }
