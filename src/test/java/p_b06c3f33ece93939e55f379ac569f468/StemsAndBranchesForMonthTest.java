@@ -2,35 +2,47 @@ package p_b06c3f33ece93939e55f379ac569f468;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import p_b06c3f33ece93939e55f379ac569f468.干支.月建;
 
 import java.time.Month;
 import java.time.Year;
+import java.util.stream.Stream;
 
-import static java.util.concurrent.ThreadLocalRandom.current;
 import static org.assertj.core.api.Assertions.assertThat;
-import static p_b06c3f33ece93939e55f379ac569f468.StemsAndBranchesForYearTest.of2020庚子;
+import static p_b06c3f33ece93939e55f379ac569f468.StemsAndBranchesForYearTest.of2020庚子年;
 
 @Slf4j
 class StemsAndBranchesForMonthTest { // 月建Test
 
-    static 干支.月建 of2020庚子04辛巳() {
-        final 干支.歲次 歲次 = of2020庚子();
-        if (current().nextBoolean()) {
-            final 天干 stem = 天干.valueOf("辛");
-            final 地支 branch = 地支.valueOf("巳");
-            final 干支 ganzhi = 干支.valueOf(stem, branch);
-            return new 干支.月建(ganzhi, 歲次, Month.APRIL);
-        } else {
-            final 天干 stem = 天干.valueOfKoreanName("신");
-            final 地支 branch = 地支.valueOfKoreanName("사");
-            final 干支 ganzhi = 干支.valueOf(stem, branch);
-            return new 干支.月建(ganzhi, 歲次, Month.APRIL);
-        }
+    // --------------------------------------------------------------------------------------------------------- 2020-04
+    static 月建 of2020庚子年04辛巳月() { // 경자년 신사월
+        return new 月建(干支.valueOfName("辛巳"), of2020庚子年(), Month.APRIL);
     }
 
+    static 月建 of2020庚子年04閏四月() { // 경자년 윤사월
+        return 月建.ofLeapMonth(of2020庚子年(), Month.APRIL);
+    }
+
+    // --------------------------------------------------------------------------------------------------------- 2020-12
+    static 月建 of2020庚子年12戊子月() { // 경자년 무자월
+        return new 月建(干支.valueOfName("戊子"), of2020庚子年(), Month.DECEMBER);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    static Stream<月建> parameters() {
+        return Stream.of(
+                of2020庚子年04辛巳月(),
+                of2020庚子年04閏四月(),
+                of2020庚子年12戊子月()
+        );
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
     @Test
     void test_of2020庚子04辛巳() {
-        final 干支.月建 月建 = of2020庚子04辛巳();
+        final 月建 月建 = of2020庚子年04辛巳月();
         assertThat(月建.getGanzhi()).isNotNull().isEqualTo(干支.valueOf(天干.valueOf("辛"), 地支.valueOf("巳")));
         assertThat(月建.getYear()).isNotNull().isEqualTo(Year.of(2020));
         assertThat(月建.getMonth()).isNotNull().isEqualTo(Month.APRIL);
@@ -38,31 +50,82 @@ class StemsAndBranchesForMonthTest { // 月建Test
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    @Test
-    void testEquals() {
-        assertThat(of2020庚子04辛巳()).isEqualTo(of2020庚子04辛巳());
+    @MethodSource({"parameters"})
+    @ParameterizedTest
+    void testToString(final 月建 月建) {
+        assertThat(月建.toString()).isNotBlank();
+    }
+
+    @MethodSource({"parameters"})
+    @ParameterizedTest
+    void testEquals(final 月建 月建) throws CloneNotSupportedException {
+        assertThat(月建).isEqualTo(月建.clone());
+    }
+
+    @MethodSource({"parameters"})
+    @ParameterizedTest
+    void testHashCode(final 月建 月建) throws CloneNotSupportedException {
+        assertThat(月建.hashCode()).satisfies(v -> {
+        });
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    @Test
-    void testGetPrevious() {
-        {
-            final 干支.月建 current = of2020庚子04辛巳();
-            assertThat(current.getPrevious()).isNotNull().satisfies(p -> {
-                assertThat(p.getYear()).isNotNull().isEqualTo(current.getYear());
-                assertThat(p.getMonth()).isNotNull().isEqualTo(current.getMonth().minus(1L));
-            });
-        }
+    @MethodSource({"parameters"})
+    @ParameterizedTest
+    void testCompareTo(final 月建 月建) throws CloneNotSupportedException {
+        assertThat(月建.compareTo(月建.clone())).isZero();
     }
 
-    @Test
-    void testGetNext() {
-        {
-            final 干支.月建 current = of2020庚子04辛巳();
-            assertThat(current.getNext()).isNotNull().satisfies(p -> {
-                assertThat(p.getYear()).isNotNull().isEqualTo(current.getYear());
-                assertThat(p.getMonth()).isNotNull().isEqualTo(current.getMonth().plus(1L));
-            });
-        }
+//    // -----------------------------------------------------------------------------------------------------------------
+//    @Test
+//    void testGetPrevious() {
+//        {
+//            final 月建 current = of2020庚子年04辛巳月();
+//            assertThat(current.getPrevious()).isNotNull().satisfies(p -> {
+//                assertThat(p.getYear()).isNotNull().isEqualTo(current.getYear());
+//                assertThat(p.getMonth()).isNotNull().isEqualTo(current.getMonth().minus(1L));
+//            });
+//        }
+//    }
+//
+//    @Test
+//    void testGetNext() {
+//        {
+//            final 月建 current = of2020庚子年04辛巳月();
+//            assertThat(current.getNext()).isNotNull().satisfies(p -> {
+//                assertThat(p.getYear()).isNotNull().isEqualTo(current.getYear());
+//                assertThat(p.getMonth()).isNotNull().isEqualTo(current.getMonth().plus(1L));
+//            });
+//        }
+//    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @MethodSource({"parameters"})
+    @ParameterizedTest
+    void testGet干支(final 月建 月建) {
+        assertThat(月建.get干支()).satisfies(v -> {
+        });
+    }
+
+    @MethodSource({"parameters"})
+    @ParameterizedTest
+    void testIsLeapMonth(final 月建 月建) {
+        assertThat(月建.isLeapMonth()).isEqualTo(月建.get干支() == null);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @MethodSource({"parameters"})
+    @ParameterizedTest
+    void testGetYear(final 月建 月建) {
+        assertThat(月建.getYear()).satisfies(v -> {
+        });
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @MethodSource({"parameters"})
+    @ParameterizedTest
+    void testGetMonth(final 月建 月建) {
+        assertThat(月建.getMonth()).satisfies(v -> {
+        });
     }
 }
