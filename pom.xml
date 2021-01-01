@@ -40,7 +40,7 @@
     <maven.compiler.testTarget>${maven.compiler.testSource}</maven.compiler.testTarget>
     <version.maven-failsafe>${version.maven-surefire}</version.maven-failsafe>
     <version.maven-javadoc-plugin>3.2.0</version.maven-javadoc-plugin>
-    <version.maven-surefire>3.0.0-M4</version.maven-surefire>
+    <version.maven-surefire>3.0.0-M5</version.maven-surefire>
     <version.org.junit.jupiter>5.7.0</version.org.junit.jupiter>
     <version.org.junit.platform>1.7.0</version.org.junit.platform>
     <version.org.mockito>3.6.28</version.org.mockito>
@@ -59,6 +59,22 @@
       <artifactId>logback-classic</artifactId>
       <version>1.2.3</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.xmlet</groupId>
+      <artifactId>htmlflow</artifactId>
+      <version>3.6</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion> <!-- dependencyConvergence -->
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+        </exclusion>
+        <exclusion> <!-- dependencyConvergence -->
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
@@ -140,7 +156,7 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.16</version>
-      <scope>test</scope>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
