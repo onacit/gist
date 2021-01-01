@@ -23,8 +23,7 @@
 	url = https://gist.github.com/onacit/ab6e031241fa295d7dff4ff85d608648
 	branch = master
 	ignore = dirty
-[submodule "src/main/java/p_b06c3f33ece93939e55f379ac569f468"]
-	path = src/main/java/p_b06c3f33ece93939e55f379ac569f468
-	url = https://gist.github.com/b06c3f33ece93939e55f379ac569f468.git
+[submodule "src/main/java/p_9386c3c805d7da9ebb7b7814daf688b3"]
+	path = src/main/java/p_9386c3c805d7da9ebb7b7814daf688b3
+	url = https://gist.github.com/9386c3c805d7da9ebb7b7814daf688b3.git
 	branch = master
-	ignore = dirty
