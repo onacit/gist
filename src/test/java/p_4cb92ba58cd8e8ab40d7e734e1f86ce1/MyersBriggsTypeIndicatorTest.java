@@ -13,20 +13,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MyersBriggsTypeIndicatorTest {
 
     @Test
-    void testOf() {
+    void valueOf_() {
         for (final Attitude a : Attitude.values()) {
             for (final PerceivingFunction p : PerceivingFunction.values()) {
                 for (final JudgingFunction j : JudgingFunction.values()) {
                     for (final LifestylePreference l : LifestylePreference.values()) {
-                        assertThat(MyersBriggsTypeIndicator.of(a, p, j, l))
+                        assertThat(MyersBriggsTypeIndicator.valueOf(a, p, j, l))
                                 .isNotNull()
                                 .satisfies(v -> {
-                                    log.debug("result: {}", v.result);
+                                    log.debug("result: {}", v.toString());
                                     assertThat(v.attitude).isSameAs(a);
                                     assertThat(v.perceivingFunction).isSameAs(p);
                                     assertThat(v.judgingFunction).isSameAs(j);
                                     assertThat(v.lifestylePreference).isSameAs(l);
-                                    assertThat(v).isSameAs(MyersBriggsTypeIndicator.ofResult(v.result));
+                                    assertThat(v).isSameAs(MyersBriggsTypeIndicator.valueOf(v.toString()));
                                 });
                     }
                 }
