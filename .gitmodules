@@ -36,3 +36,6 @@
 [submodule "src/main/java/p_cbce744a2311348a85ec517fa8d31521"]
 	path = src/main/java/p_cbce744a2311348a85ec517fa8d31521
 	url = https://gist.github.com/cbce744a2311348a85ec517fa8d31521.git
+[submodule "src/main/java/g_2d743cfd472de915cbb86736f3be3c3c"]
+	path = src/main/java/g_2d743cfd472de915cbb86736f3be3c3c
+	url = https://gist.github.com/2d743cfd472de915cbb86736f3be3c3c.git
