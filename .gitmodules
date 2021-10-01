@@ -16,12 +16,6 @@
 	branch = master
 	ignore = dirty
 	update = merge
-[submodule "src/main/java/p_4cb92ba58cd8e8ab40d7e734e1f86ce1"]
-	path = src/main/java/p_4cb92ba58cd8e8ab40d7e734e1f86ce1
-	url = https://gist.github.com/4cb92ba58cd8e8ab40d7e734e1f86ce1.git
-	branch = master
-	ignore = dirty
-	update = merge
 [submodule "src/main/java/p_ab6e031241fa295d7dff4ff85d608648"]
 	path = src/main/java/p_ab6e031241fa295d7dff4ff85d608648
 	url = https://gist.github.com/onacit/ab6e031241fa295d7dff4ff85d608648
@@ -36,6 +30,9 @@
 [submodule "src/main/java/p_cbce744a2311348a85ec517fa8d31521"]
 	path = src/main/java/p_cbce744a2311348a85ec517fa8d31521
 	url = https://gist.github.com/cbce744a2311348a85ec517fa8d31521.git
+[submodule "src/main/java/g_2d743cfd472de915cbb86736f3be3c3c"]
+	path = src/main/java/g_2d743cfd472de915cbb86736f3be3c3c
+	url = https://gist.github.com/2d743cfd472de915cbb86736f3be3c3c.git
 [submodule "src/main/java/p_0dd925d3768fcd4f79494ae32905dc1b"]
 	path = src/main/java/p_0dd925d3768fcd4f79494ae32905dc1b
 	url = https://gist.github.com/0dd925d3768fcd4f79494ae32905dc1b.git
