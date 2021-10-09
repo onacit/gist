@@ -10,9 +10,9 @@
 	branch = master
 	ignore = dirty
 	update = merge
-[submodule "src/main/java/p_aea6ebe8f23c7ea8b3bdc99a62169b07"]
-	path = src/main/java/p_aea6ebe8f23c7ea8b3bdc99a62169b07
-	url = https://gist.github.com/aea6ebe8f23c7ea8b3bdc99a62169b07.git
+[submodule "src/main/java/p_008327149237522fbe45604451db4995"]
+	path = src/main/java/p_008327149237522fbe45604451db4995
+	url = https://gist.github.com/008327149237522fbe45604451db4995.git
 	branch = master
 	ignore = dirty
 	update = merge
@@ -22,14 +22,20 @@
 	branch = master
 	ignore = dirty
 	update = merge
+[submodule "src/main/java/p_aea6ebe8f23c7ea8b3bdc99a62169b07"]
+	path = src/main/java/p_aea6ebe8f23c7ea8b3bdc99a62169b07
+	url = https://gist.github.com/aea6ebe8f23c7ea8b3bdc99a62169b07.git
+	branch = master
+	ignore = dirty
+	update = merge
+[submodule "src/main/java/p_235a3adac4df6f02bb13db34a125ae3d"]
+	path = src/main/java/p_235a3adac4df6f02bb13db34a125ae3d
+	url = https://gist.github.com/235a3adac4df6f02bb13db34a125ae3d.git
 [submodule "src/main/java/p_9386c3c805d7da9ebb7b7814daf688b3"]
 	path = src/main/java/p_9386c3c805d7da9ebb7b7814daf688b3
 	url = https://gist.github.com/9386c3c805d7da9ebb7b7814daf688b3.git
 	branch = master
 	update = merge
-[submodule "src/main/java/p_235a3adac4df6f02bb13db34a125ae3d"]
-	path = src/main/java/p_235a3adac4df6f02bb13db34a125ae3d
-	url = https://gist.github.com/235a3adac4df6f02bb13db34a125ae3d.git
 [submodule "src/main/java/p_cbce744a2311348a85ec517fa8d31521"]
 	path = src/main/java/p_cbce744a2311348a85ec517fa8d31521
 	url = https://gist.github.com/cbce744a2311348a85ec517fa8d31521.git
@@ -39,6 +45,5 @@
 [submodule "src/main/java/p_0dd925d3768fcd4f79494ae32905dc1b"]
 	path = src/main/java/p_0dd925d3768fcd4f79494ae32905dc1b
 	url = https://gist.github.com/0dd925d3768fcd4f79494ae32905dc1b.git
-[submodule "src/main/java/p_008327149237522fbe45604451db4995"]
-	path = src/main/java/p_008327149237522fbe45604451db4995
-	url = https://gist.github.com/008327149237522fbe45604451db4995.git
+	branch = master
+	update = merge
