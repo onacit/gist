@@ -30,7 +30,8 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .hasSameElementsAs(sorted1);
+                .containsExactlyElementsOf(sorted1)
+        ;
     }
 
     @Test
@@ -45,7 +46,7 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .hasSameElementsAs(sorted1);
+                .containsExactlyElementsOf(sorted1);
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort2
@@ -61,7 +62,7 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .hasSameElementsAs(sorted1);
+                .containsExactlyElementsOf(sorted1);
     }
 
     @Test
@@ -76,7 +77,7 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .hasSameElementsAs(sorted1);
+                .containsExactlyElementsOf(sorted1);
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort3
@@ -92,7 +93,7 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .hasSameElementsAs(sorted1);
+                .containsExactlyElementsOf(sorted1);
     }
 
     @Test
@@ -107,7 +108,7 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .hasSameElementsAs(sorted1);
+                .containsExactlyElementsOf(sorted1);
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort3
@@ -123,7 +124,7 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .hasSameElementsAs(sorted1);
+                .containsExactlyElementsOf(sorted1);
     }
 
     @Test
@@ -138,6 +139,6 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .hasSameElementsAs(sorted1);
+                .containsExactlyElementsOf(sorted1);
     }
 }
