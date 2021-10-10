@@ -1,9 +1,11 @@
 package p_008327149237522fbe45604451db4995;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -11,18 +13,27 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 class InsertionSortTest {
 
+    private static Stream<List<Integer>> unsortedListsOfIntegers() {
+        return Stream.of(
+                Arrays.asList(2, 0, 3, 1),
+                Arrays.asList(3, 7, 4, 9, 5, 2, 6, 1),
+                IntStream.range(0, 128)
+                        .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
+                        .collect(Collectors.toList())
+        );
+    }
+
     // ----------------------------------------------------------------------------------------------------------- sort1
-    @Test
-    void sort1__Integers_ArrayList() {
-        final List<Integer> unsorted = IntStream.range(0, 128)
-                .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
-                .collect(Collectors.toList());
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort1__Integers_ArrayList(final List<Integer> unsorted) {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
@@ -34,11 +45,9 @@ class InsertionSortTest {
         ;
     }
 
-    @Test
-    void sort1__Integers_LinkedList() {
-        final List<Integer> unsorted = IntStream.range(0, 128)
-                .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
-                .collect(Collectors.toList());
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort1__Integers_LinkedList(final List<Integer> unsorted) {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
@@ -50,11 +59,9 @@ class InsertionSortTest {
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort2
-    @Test
-    void sort2__Integers_ArrayList() {
-        final List<Integer> unsorted = IntStream.range(0, 128)
-                .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
-                .collect(Collectors.toList());
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort2__Integers_ArrayList(final List<Integer> unsorted) {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
@@ -65,11 +72,9 @@ class InsertionSortTest {
                 .containsExactlyElementsOf(sorted1);
     }
 
-    @Test
-    void sort2__Integers_LinkedList() {
-        final List<Integer> unsorted = IntStream.range(0, 16)
-                .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
-                .collect(Collectors.toList());
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort2__Integers_LinkedList(final List<Integer> unsorted) {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
@@ -81,11 +86,9 @@ class InsertionSortTest {
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort3
-    @Test
-    void sort3__Integers_ArrayList() {
-        final List<Integer> unsorted = IntStream.range(0, 128)
-                .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
-                .collect(Collectors.toList());
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort3__Integers_ArrayList(final List<Integer> unsorted) {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
@@ -96,11 +99,9 @@ class InsertionSortTest {
                 .containsExactlyElementsOf(sorted1);
     }
 
-    @Test
-    void sort3__Integers_LinkedList() {
-        final List<Integer> unsorted = IntStream.range(0, 128)
-                .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
-                .collect(Collectors.toList());
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort3__Integers_LinkedList(final List<Integer> unsorted) {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
@@ -112,11 +113,9 @@ class InsertionSortTest {
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort3
-    @Test
-    void sort4__Integers_ArrayList() {
-        final List<Integer> unsorted = IntStream.range(0, 128)
-                .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
-                .collect(Collectors.toList());
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort4__Integers_ArrayList(final List<Integer> unsorted) {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
@@ -127,11 +126,9 @@ class InsertionSortTest {
                 .containsExactlyElementsOf(sorted1);
     }
 
-    @Test
-    void sort4__Integers_LinkedList() {
-        final List<Integer> unsorted = IntStream.range(0, 128)
-                .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
-                .collect(Collectors.toList());
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort4__Integers_LinkedList(final List<Integer> unsorted) {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
