@@ -43,6 +43,9 @@ class InsertionSortTest {
                 .isSortedAccordingTo(Comparator.naturalOrder())
                 .containsExactlyElementsOf(sorted1)
         ;
+        for (int i = 0; i < sorted2.size(); i++) {
+            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
+        }
     }
 
     @MethodSource({"unsortedListsOfIntegers"})
