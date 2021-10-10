@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -22,10 +21,12 @@ class InsertionSortTest {
 
     private static Stream<List<Integer>> unsortedListsOfIntegers() {
         return Stream.of(
-                Arrays.asList(2, 0, 3, 1),
-                Arrays.asList(3, 7, 4, 9, 5, 2, 6, 1),
+                IntStream.of(2, 0, 3, 1).mapToObj(Integer::new).collect(Collectors.toList()),
+                IntStream.of(2, 0, 0, 3, 1).mapToObj(Integer::new).collect(Collectors.toList()),
+                IntStream.of(3, 7, 4, 9, 5, 2, 6, 1).mapToObj(Integer::new).collect(Collectors.toList()),
                 IntStream.range(0, 128)
-                        .map(i -> ThreadLocalRandom.current().nextInt()).boxed()
+                        .map(i -> ThreadLocalRandom.current().nextInt())
+                        .mapToObj(Integer::new)
                         .collect(Collectors.toList())
         );
     }
@@ -59,6 +60,9 @@ class InsertionSortTest {
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
                 .containsExactlyElementsOf(sorted1);
+        for (int i = 0; i < sorted2.size(); i++) {
+            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
+        }
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort2
@@ -73,6 +77,9 @@ class InsertionSortTest {
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
                 .containsExactlyElementsOf(sorted1);
+        for (int i = 0; i < sorted2.size(); i++) {
+            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
+        }
     }
 
     @MethodSource({"unsortedListsOfIntegers"})
@@ -86,6 +93,9 @@ class InsertionSortTest {
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
                 .containsExactlyElementsOf(sorted1);
+        for (int i = 0; i < sorted2.size(); i++) {
+            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
+        }
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort3
@@ -100,6 +110,9 @@ class InsertionSortTest {
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
                 .containsExactlyElementsOf(sorted1);
+        for (int i = 0; i < sorted2.size(); i++) {
+            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
+        }
     }
 
     @MethodSource({"unsortedListsOfIntegers"})
@@ -113,6 +126,9 @@ class InsertionSortTest {
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
                 .containsExactlyElementsOf(sorted1);
+        for (int i = 0; i < sorted2.size(); i++) {
+            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
+        }
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort3
@@ -127,6 +143,9 @@ class InsertionSortTest {
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
                 .containsExactlyElementsOf(sorted1);
+        for (int i = 0; i < sorted2.size(); i++) {
+            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
+        }
     }
 
     @MethodSource({"unsortedListsOfIntegers"})
@@ -140,5 +159,8 @@ class InsertionSortTest {
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
                 .containsExactlyElementsOf(sorted1);
+        for (int i = 0; i < sorted2.size(); i++) {
+            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
+        }
     }
 }
