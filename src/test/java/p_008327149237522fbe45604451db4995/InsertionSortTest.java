@@ -42,11 +42,9 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .containsExactlyElementsOf(sorted1)
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1) // nothing else in the same order
         ;
-        for (int i = 0; i < sorted2.size(); i++) {
-            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
-        }
     }
 
     @MethodSource({"unsortedListsOfIntegers"})
@@ -59,10 +57,9 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .containsExactlyElementsOf(sorted1);
-        for (int i = 0; i < sorted2.size(); i++) {
-            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
-        }
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1)
+        ;
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort2
@@ -76,10 +73,9 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .containsExactlyElementsOf(sorted1);
-        for (int i = 0; i < sorted2.size(); i++) {
-            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
-        }
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1)
+        ;
     }
 
     @MethodSource({"unsortedListsOfIntegers"})
@@ -92,10 +88,9 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .containsExactlyElementsOf(sorted1);
-        for (int i = 0; i < sorted2.size(); i++) {
-            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
-        }
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1)
+        ;
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort3
@@ -109,10 +104,9 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .containsExactlyElementsOf(sorted1);
-        for (int i = 0; i < sorted2.size(); i++) {
-            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
-        }
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1)
+        ;
     }
 
     @MethodSource({"unsortedListsOfIntegers"})
@@ -125,10 +119,9 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .containsExactlyElementsOf(sorted1);
-        for (int i = 0; i < sorted2.size(); i++) {
-            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
-        }
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1)
+        ;
     }
 
     // ----------------------------------------------------------------------------------------------------------- sort3
@@ -142,10 +135,9 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .containsExactlyElementsOf(sorted1);
-        for (int i = 0; i < sorted2.size(); i++) {
-            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
-        }
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1)
+        ;
     }
 
     @MethodSource({"unsortedListsOfIntegers"})
@@ -158,9 +150,8 @@ class InsertionSortTest {
         assertThat(sorted2)
                 .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
-                .containsExactlyElementsOf(sorted1);
-        for (int i = 0; i < sorted2.size(); i++) {
-            assertThat(sorted2.get(i)).isSameAs(sorted1.get(i));
-        }
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1)
+        ;
     }
 }
