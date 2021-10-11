@@ -14,6 +14,7 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,17 +35,17 @@ public class SelectionSortBenchmarkLinkedList {
     // -----------------------------------------------------------------------------------------------------------------
     @Benchmark
     public void sort1() {
-        SelectionSort.sort1(new LinkedList<>(unsorted));
+        SelectionSort.sort1(new LinkedList<>(unsorted), Comparator.naturalOrder());
     }
 
     @Benchmark
     public void sort2() {
-        SelectionSort.sort2(new LinkedList<>(unsorted));
+        SelectionSort.sort2(new LinkedList<>(unsorted), Comparator.naturalOrder());
     }
 
     @Benchmark
     public void sort3() {
-        SelectionSort.sort3(new LinkedList<>(unsorted));
+        SelectionSort.sort3(new LinkedList<>(unsorted), Comparator.naturalOrder());
     }
 
     // -----------------------------------------------------------------------------------------------------------------

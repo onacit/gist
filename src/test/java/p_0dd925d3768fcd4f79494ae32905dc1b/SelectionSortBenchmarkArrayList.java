@@ -15,6 +15,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -35,17 +36,17 @@ public class SelectionSortBenchmarkArrayList {
     // -----------------------------------------------------------------------------------------------------------------
     @Benchmark
     public void sort1() {
-        SelectionSort.sort1(new ArrayList<>(unsorted));
+        SelectionSort.sort1(new ArrayList<>(unsorted), Comparator.naturalOrder());
     }
 
     @Benchmark
     public void sort2() {
-        SelectionSort.sort2(new ArrayList<>(unsorted));
+        SelectionSort.sort2(new ArrayList<>(unsorted), Comparator.naturalOrder());
     }
 
     @Benchmark
     public void sort3() {
-        SelectionSort.sort3(new ArrayList<>(unsorted));
+        SelectionSort.sort3(new ArrayList<>(unsorted), Comparator.naturalOrder());
     }
 
     // -----------------------------------------------------------------------------------------------------------------

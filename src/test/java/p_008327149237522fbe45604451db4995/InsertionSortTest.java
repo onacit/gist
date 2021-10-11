@@ -38,10 +38,10 @@ class InsertionSortTest {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
-        InsertionSort.sort1(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort1(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1) // nothing else in the same order
         ;
@@ -53,9 +53,9 @@ class InsertionSortTest {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
-        InsertionSort.sort1(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort1(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
                 .isSortedAccordingTo(Comparator.naturalOrder())
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
@@ -69,10 +69,10 @@ class InsertionSortTest {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
-        InsertionSort.sort2(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort2(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
         ;
@@ -84,10 +84,10 @@ class InsertionSortTest {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
-        InsertionSort.sort2(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort2(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
         ;
@@ -100,10 +100,10 @@ class InsertionSortTest {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
-        InsertionSort.sort3(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort3(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
         ;
@@ -115,10 +115,10 @@ class InsertionSortTest {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
-        InsertionSort.sort3(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort3(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
         ;
@@ -131,10 +131,10 @@ class InsertionSortTest {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
-        InsertionSort.sort4(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort4(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
         ;
@@ -146,10 +146,10 @@ class InsertionSortTest {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
-        InsertionSort.sort4(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort4(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
         ;

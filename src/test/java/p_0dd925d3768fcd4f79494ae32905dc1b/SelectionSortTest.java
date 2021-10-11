@@ -36,10 +36,10 @@ class SelectionSortTest {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
-        SelectionSort.sort1(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        SelectionSort.sort1(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1) // nothing else in the same order
         ;
@@ -51,10 +51,10 @@ class SelectionSortTest {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
-        SelectionSort.sort1(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        SelectionSort.sort1(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
         ;
@@ -67,10 +67,10 @@ class SelectionSortTest {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
-        SelectionSort.sort2(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        SelectionSort.sort2(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1) // nothing else in the same order
         ;
@@ -82,10 +82,10 @@ class SelectionSortTest {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
-        SelectionSort.sort2(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        SelectionSort.sort2(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
         ;
@@ -98,10 +98,10 @@ class SelectionSortTest {
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
-        SelectionSort.sort3(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        SelectionSort.sort3(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1) // nothing else in the same order
         ;
@@ -113,10 +113,10 @@ class SelectionSortTest {
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         Collections.sort(sorted1);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
-        SelectionSort.sort3(sorted2);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        SelectionSort.sort3(sorted2, comparator);
         assertThat(sorted2)
-                .isSorted()
-                .isSortedAccordingTo(Comparator.naturalOrder())
+                .isSortedAccordingTo(comparator)
                 .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
                 .containsExactlyElementsOf(sorted1)
         ;
