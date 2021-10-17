@@ -154,4 +154,36 @@ class InsertionSortTest {
                 .containsExactlyElementsOf(sorted1)
         ;
     }
+
+    // ----------------------------------------------------------------------------------------------------------- sort5
+
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort5__Integers_ArrayList(final List<Integer> unsorted) {
+        final List<Integer> sorted1 = new ArrayList<>(unsorted);
+        Collections.sort(sorted1);
+        final List<Integer> sorted2 = new ArrayList<>(unsorted);
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort5(sorted2, comparator);
+        assertThat(sorted2)
+                .isSortedAccordingTo(comparator)
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1)
+        ;
+    }
+
+    @MethodSource({"unsortedListsOfIntegers"})
+    @ParameterizedTest
+    void sort5__Integers_LinkedList(final List<Integer> unsorted) {
+        final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
+        Collections.sort(sorted1);
+        final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
+        final Comparator<Integer> comparator = Comparator.naturalOrder();
+        InsertionSort.sort5(sorted2, comparator);
+        assertThat(sorted2)
+                .isSortedAccordingTo(comparator)
+                .usingElementComparator((o1, o2) -> o1 == o2 ? 0 : -1)
+                .containsExactlyElementsOf(sorted1)
+        ;
+    }
 }
