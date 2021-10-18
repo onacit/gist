@@ -7,37 +7,31 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * A class for testing {@link CountingSort} class.
+ *
+ * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
+ */
 class CountingSortTest {
 
     @Test
-    void sort_sorted_EmptyByteArray() {
-        final byte[] unsorted = new byte[0];
-        final byte[] sorted1 = Arrays.copyOf(unsorted, unsorted.length);
-        Arrays.sort(sorted1);
-        final byte[] sorted2 = CountingSort.sort(unsorted);
-        assertThat(sorted2).isSorted()
-                .isEqualTo(sorted1);
-    }
-
-    @Test
-    void sort_sorted_OneByteArray() {
-        final byte[] unsorted = new byte[] {
-                (byte) (ThreadLocalRandom.current().nextInt() >>> 24)
-        };
-        final byte[] sorted1 = Arrays.copyOf(unsorted, unsorted.length);
-        Arrays.sort(sorted1);
-        final byte[] sorted2 = CountingSort.sort(unsorted);
-        assertThat(sorted2).isSorted()
-                .isEqualTo(sorted1);
-    }
-
-    @Test
-    void sort_sorted_bytes() {
+    void sort1_sorted_bytes() {
         final byte[] unsorted = new byte[ThreadLocalRandom.current().nextInt(1, 1024)];
         ThreadLocalRandom.current().nextBytes(unsorted);
         final byte[] sorted1 = Arrays.copyOf(unsorted, unsorted.length);
         Arrays.sort(sorted1);
-        final byte[] sorted2 = CountingSort.sort(unsorted);
+        final byte[] sorted2 = CountingSort.sort1(unsorted, null, null);
+        assertThat(sorted2).isSorted()
+                .isEqualTo(sorted1);
+    }
+
+    @Test
+    void sort2_sorted_bytes() {
+        final byte[] unsorted = new byte[ThreadLocalRandom.current().nextInt(1, 1024)];
+        ThreadLocalRandom.current().nextBytes(unsorted);
+        final byte[] sorted1 = Arrays.copyOf(unsorted, unsorted.length);
+        Arrays.sort(sorted1);
+        final byte[] sorted2 = CountingSort.sort2(unsorted, null, null);
         assertThat(sorted2).isSorted()
                 .isEqualTo(sorted1);
     }
