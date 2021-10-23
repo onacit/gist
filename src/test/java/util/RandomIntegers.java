@@ -17,7 +17,7 @@ import static java.util.Objects.requireNonNull;
 public class RandomIntegers {
 
     public static URL getResource(final int count) {
-        return requireNonNull(RandomIntegers.class.getResource("util.RandomIntegers" + count + ".txt"));
+        return requireNonNull(RandomIntegers.class.getResource("RandomIntegers" + count + ".txt"));
     }
 
     public static <R> R applyResourceStream(final int count, final Function<? super InputStream, ? extends R> function)
