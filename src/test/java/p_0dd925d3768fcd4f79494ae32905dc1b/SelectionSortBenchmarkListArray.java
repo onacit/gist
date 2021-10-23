@@ -13,21 +13,22 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @BenchmarkMode({Mode.SingleShotTime})
 @State(Scope.Benchmark)
 @Slf4j
-public class SelectionSortBenchmarkLinkedList {
+public class SelectionSortBenchmarkListArray {
 
     public static void main(final String... args) throws RunnerException {
         final Options options = new OptionsBuilder()
-                .include(SelectionSortBenchmarkLinkedList.class.getName() + ".*")
+                .include(SelectionSortBenchmarkListArray.class.getName() + ".*")
                 .build();
         new Runner(options).run();
     }
@@ -35,27 +36,25 @@ public class SelectionSortBenchmarkLinkedList {
     // -----------------------------------------------------------------------------------------------------------------
     @Benchmark
     public void sort1() {
-        SelectionSort.sort1(new LinkedList<>(unsorted), Comparator.naturalOrder());
+        SelectionSort.sort1(new ArrayList<>(unsorted), Comparator.naturalOrder());
     }
 
     @Benchmark
     public void sort2() {
-        SelectionSort.sort2(new LinkedList<>(unsorted), Comparator.naturalOrder());
+        SelectionSort.sort2(new ArrayList<>(unsorted), Comparator.naturalOrder());
     }
 
     @Benchmark
     public void sort3() {
-        SelectionSort.sort3(new LinkedList<>(unsorted), Comparator.naturalOrder());
+        SelectionSort.sort3(new ArrayList<>(unsorted), Comparator.naturalOrder());
     }
 
     // -----------------------------------------------------------------------------------------------------------------
     @Setup
     public void onSetup() {
-//        log.debug("setting up...");
-        final int size = 8192;
         unsorted = Collections.unmodifiableList(
-                IntStream.range(0, size)
-                        .map(i -> size - i - 1)
+                IntStream.range(0, 8192)
+                        .map(i -> ThreadLocalRandom.current().nextInt())
                         .boxed()
                         .collect(Collectors.toList())
         );
@@ -63,7 +62,6 @@ public class SelectionSortBenchmarkLinkedList {
 
     @TearDown
     public void onTearDown() {
-//        log.debug("tearing down...");
         unsorted = null;
     }
 

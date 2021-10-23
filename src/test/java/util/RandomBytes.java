@@ -1,3 +1,6 @@
+package util;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -12,10 +15,10 @@ import java.util.stream.IntStream;
 
 import static java.util.Objects.requireNonNull;
 
-public class RandomIntegers {
+public final class RandomBytes {
 
     public static URL getResource(final int count) {
-        return requireNonNull(RandomIntegers.class.getResource("RandomIntegers" + count + ".txt"));
+        return requireNonNull(RandomBytes.class.getResource("RandomBytes" + count + ".txt"));
     }
 
     public static <R> R applyResourceStream(final int count, final Function<? super InputStream, ? extends R> function)
@@ -41,7 +44,22 @@ public class RandomIntegers {
         return applyResourceIntStream(count, s -> s.boxed().collect(Collectors.toList()));
     }
 
-    private RandomIntegers() {
+    public static byte[] bytes(final int count) {
+        getResource(count);
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            Files.lines(Paths.get(getResource(count).toURI()))
+                    .map(String::trim)
+                    .filter(s -> !s.isEmpty())
+                    .map(l -> Integer.parseInt(l, 16))
+                    .forEach(baos::write);
+        } catch (final Exception e) {
+            throw new RuntimeException(e);
+        }
+        return baos.toByteArray();
+    }
+
+    private RandomBytes() {
         throw new AssertionError("instantiation is not allowed");
     }
 }
