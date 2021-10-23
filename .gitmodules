@@ -50,3 +50,6 @@
 [submodule "src/main/java/g_4be11fad6d8165bde47b988c14705b64"]
 	path = src/main/java/g_4be11fad6d8165bde47b988c14705b64
 	url = https://gist.github.com/4be11fad6d8165bde47b988c14705b64.git
+[submodule "src/main/java/p_4cb92ba58cd8e8ab40d7e734e1f86ce1"]
+	path = src/main/java/p_4cb92ba58cd8e8ab40d7e734e1f86ce1
+	url = https://gist.github.com/4cb92ba58cd8e8ab40d7e734e1f86ce1.git
