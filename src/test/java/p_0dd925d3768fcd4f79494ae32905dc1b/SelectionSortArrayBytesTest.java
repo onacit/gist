@@ -16,7 +16,7 @@ class SelectionSortArrayBytesTest {
         return array;
     }
 
-    private static Stream<byte[]> arrays() {
+    private static Stream<byte[]> parameters() {
         return Stream.of(
                 new byte[0],
                 new byte[] {(byte) current().nextInt(Byte.MIN_VALUE, Byte.MAX_VALUE + 1)},
@@ -24,7 +24,7 @@ class SelectionSortArrayBytesTest {
         );
     }
 
-    @MethodSource({"arrays"})
+    @MethodSource({"parameters"})
     @ParameterizedTest
     void sort1_Sorted_Given(final byte[] a) {
         current().nextBytes(a);
@@ -32,11 +32,19 @@ class SelectionSortArrayBytesTest {
         assertThat(a).isSorted();
     }
 
-    @MethodSource({"arrays"})
+    @MethodSource({"parameters"})
     @ParameterizedTest
     void sort2_Sorted_Given(final byte[] a) {
         current().nextBytes(a);
         SelectionSort.sort2(a);
+        assertThat(a).isSorted();
+    }
+
+    @MethodSource({"parameters"})
+    @ParameterizedTest
+    void sort3_Sorted_Given(final byte[] a) {
+        current().nextBytes(a);
+        SelectionSort.sort3(a);
         assertThat(a).isSorted();
     }
 }
