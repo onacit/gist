@@ -158,9 +158,8 @@ class SelectionSortTest {
     // ----------------------------------------------------------------------------------------------------------- sort5
     @MethodSource({"unsortedListsOfIntegers"})
     @ParameterizedTest
-    void sort5__Integers_ArrayList(List<Integer> unsorted) {
-        unsorted = unsorted.stream().filter(Objects::nonNull).collect(Collectors.toList());
-        final Comparator<Integer> comparator = Comparator.naturalOrder();
+    void sort5__Integers_ArrayList(final List<Integer> unsorted) {
+        final Comparator<Integer> comparator = Comparator.nullsFirst(Comparator.naturalOrder());
         final List<Integer> sorted1 = new ArrayList<>(unsorted);
         sorted1.sort(comparator);
         final List<Integer> sorted2 = new ArrayList<>(unsorted);
@@ -174,9 +173,8 @@ class SelectionSortTest {
 
     @MethodSource({"unsortedListsOfIntegers"})
     @ParameterizedTest
-    void sort5__Integers_LinkedList(List<Integer> unsorted) {
-        unsorted = unsorted.stream().filter(Objects::nonNull).collect(Collectors.toList());
-        final Comparator<Integer> comparator = Comparator.naturalOrder();
+    void sort5__Integers_LinkedList(final List<Integer> unsorted) {
+        final Comparator<Integer> comparator = Comparator.nullsFirst(Comparator.naturalOrder());
         final List<Integer> sorted1 = new LinkedList<>(new ArrayList<>(unsorted));
         sorted1.sort(comparator);
         final List<Integer> sorted2 = new LinkedList<>(new ArrayList<>(unsorted));
