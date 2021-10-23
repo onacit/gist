@@ -8,11 +8,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.util.concurrent.ThreadLocalRandom.current;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class SelectionSortTest {
@@ -23,7 +23,7 @@ class SelectionSortTest {
                 IntStream.of(2, 0, 0, 3, 1).mapToObj(Integer::new).collect(Collectors.toList()),
                 IntStream.of(3, 7, 4, 9, 5, 2, 6, 1).mapToObj(Integer::new).collect(Collectors.toList()),
                 IntStream.range(0, 128)
-                        .map(i -> ThreadLocalRandom.current().nextInt())
+                        .map(i -> current().nextInt())
                         .mapToObj(Integer::new)
                         .collect(Collectors.toList())
         );
