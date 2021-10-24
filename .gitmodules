@@ -16,6 +16,12 @@
 	branch = master
 	ignore = dirty
 	update = merge
+[submodule "src/main/java/g_5b6693d05a1905e92a286b0f2314eb4f"]
+  	path = src/main/java/g_5b6693d05a1905e92a286b0f2314eb4f
+   	url = https://gist.github.com/5b6693d05a1905e92a286b0f2314eb4f.git
+	branch = master
+	ignore = dirty
+	update = merge
 [submodule "src/main/java/p_fd0b04b007e395a7fcfc5066898d422d"]
 	path = src/main/java/p_fd0b04b007e395a7fcfc5066898d422d
 	url = https://gist.github.com/fd0b04b007e395a7fcfc5066898d422d.git
