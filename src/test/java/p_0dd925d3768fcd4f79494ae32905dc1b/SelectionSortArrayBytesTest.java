@@ -1,5 +1,6 @@
 package p_0dd925d3768fcd4f79494ae32905dc1b;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -8,6 +9,7 @@ import java.util.stream.Stream;
 import static java.util.concurrent.ThreadLocalRandom.current;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Slf4j
 class SelectionSortArrayBytesTest {
 
     private static byte[] random() {
@@ -27,24 +29,21 @@ class SelectionSortArrayBytesTest {
     @MethodSource({"parameters"})
     @ParameterizedTest
     void sort1_Sorted_Given(final byte[] a) {
-        current().nextBytes(a);
-        SelectionSort.sort1(a);
+        SelectionSortArrayBytes.sort1(a, 0, a.length);
         assertThat(a).isSorted();
     }
 
     @MethodSource({"parameters"})
     @ParameterizedTest
     void sort2_Sorted_Given(final byte[] a) {
-        current().nextBytes(a);
-        SelectionSort.sort2(a);
+        SelectionSortArrayBytes.sort2(a, 0, a.length);
         assertThat(a).isSorted();
     }
 
     @MethodSource({"parameters"})
     @ParameterizedTest
     void sort3_Sorted_Given(final byte[] a) {
-        current().nextBytes(a);
-        SelectionSort.sort3(a);
+        SelectionSortArrayBytes.sort3(a, 0, a.length);
         assertThat(a).isSorted();
     }
 }
