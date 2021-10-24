@@ -21,7 +21,6 @@ class MyersBriggsTypeIndicatorTest {
                         assertThat(MyersBriggsTypeIndicator.valueOf(a, p, j, l))
                                 .isNotNull()
                                 .satisfies(v -> {
-                                    log.debug("result: {}", v.toString());
                                     assertThat(v.attitude).isSameAs(a);
                                     assertThat(v.perceivingFunction).isSameAs(p);
                                     assertThat(v.judgingFunction).isSameAs(j);
