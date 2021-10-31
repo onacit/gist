@@ -12,10 +12,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-class CountingSortTest {
+class CountingSortArrayBytesTest {
 
     @Test
-    void sort1_sorted_bytes() {
+    void sort1__() {
         final byte[] unsorted = new byte[ThreadLocalRandom.current().nextInt(1, 1024)];
         ThreadLocalRandom.current().nextBytes(unsorted);
         final byte[] sorted1 = Arrays.copyOf(unsorted, unsorted.length);
@@ -26,12 +26,24 @@ class CountingSortTest {
     }
 
     @Test
-    void sort2_sorted_bytes() {
+    void sort2__() {
         final byte[] unsorted = new byte[ThreadLocalRandom.current().nextInt(1, 1024)];
         ThreadLocalRandom.current().nextBytes(unsorted);
         final byte[] sorted1 = Arrays.copyOf(unsorted, unsorted.length);
         Arrays.sort(sorted1);
         final byte[] sorted2 = CountingSort.sort2(unsorted, null, null);
+        assertThat(sorted2).isSorted()
+                .isEqualTo(sorted1);
+    }
+
+    @Test
+    void sort3__() {
+        final byte[] unsorted = new byte[ThreadLocalRandom.current().nextInt(1, 1024)];
+        ThreadLocalRandom.current().nextBytes(unsorted);
+        final byte[] sorted1 = Arrays.copyOf(unsorted, unsorted.length);
+        Arrays.sort(sorted1);
+        final byte[] sorted2 = Arrays.copyOf(unsorted, unsorted.length);
+        CountingSort.sort3(sorted2, null, null);
         assertThat(sorted2).isSorted()
                 .isEqualTo(sorted1);
     }
