@@ -78,3 +78,6 @@
 [submodule "src/main/java/g_79ff0bed607bef315c4353b374e1319e"]
 	path = src/main/java/g_79ff0bed607bef315c4353b374e1319e
 	url = git@gist.github.com:79ff0bed607bef315c4353b374e1319e.git
+[submodule "src/main/java/g_4e8088fb3f1436ab0e260865c85323a7"]
+	path = src/main/java/g_4e8088fb3f1436ab0e260865c85323a7
+	url = https://gist.github.com/4e8088fb3f1436ab0e260865c85323a7.git
