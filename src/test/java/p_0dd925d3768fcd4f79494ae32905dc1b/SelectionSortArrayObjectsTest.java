@@ -23,7 +23,7 @@ class SelectionSortArrayObjectsTest {
     private static Stream<Arguments> parameters() {
         return Stream.of(
                         new Integer[0],
-                        new Integer[] {current().nextInt(Byte.MIN_VALUE, Byte.MAX_VALUE + 1)},
+                        new Integer[]{current().nextInt(Byte.MIN_VALUE, Byte.MAX_VALUE + 1)},
                         random()
                 )
                 .map(v -> Arguments.of((Object) v));

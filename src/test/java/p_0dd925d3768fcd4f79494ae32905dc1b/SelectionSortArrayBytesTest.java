@@ -21,7 +21,7 @@ class SelectionSortArrayBytesTest {
     private static Stream<byte[]> parameters() {
         return Stream.of(
                 new byte[0],
-                new byte[] {(byte) current().nextInt(Byte.MIN_VALUE, Byte.MAX_VALUE + 1)},
+                new byte[]{(byte) current().nextInt(Byte.MIN_VALUE, Byte.MAX_VALUE + 1)},
                 random()
         );
     }

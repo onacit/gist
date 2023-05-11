@@ -7,8 +7,6 @@ import p_4cb92ba58cd8e8ab40d7e734e1f86ce1.MyersBriggsTypeIndicator.JudgingFuncti
 import p_4cb92ba58cd8e8ab40d7e734e1f86ce1.MyersBriggsTypeIndicator.LifestylePreference;
 import p_4cb92ba58cd8e8ab40d7e734e1f86ce1.MyersBriggsTypeIndicator.PerceivingFunction;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @Slf4j
 class MyersBriggsTypeIndicatorTest {
 
